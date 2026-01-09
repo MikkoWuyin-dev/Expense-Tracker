@@ -1,2 +1,2 @@
-# Expense-Tracker
-An iterative front end engineering project. 
+This project demonstrates how a production-grade frontend application is built using iteration and critique, instead of blindly following tutorials.
+

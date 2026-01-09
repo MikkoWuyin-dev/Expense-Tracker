@@ -1,0 +1,405 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+}
+
+body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--secondary-color);
+      background: linear-gradient(135deg, #5e57ad, #3C31C0);
+}
+
+:root {
+      --primary-color: #3C31C0;
+      --secondary-color: #292182;
+      --background-color: #faf8f8;
+      --text-color: #444;
+      --verdant-green: #099018;
+      --padding-large: 25px;
+      --padding-medium: 15px;
+      --button-radius: 10px;
+}
+
+button {
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+}
+
+.tracker-app {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+}
+
+.tracker-app > .transaction-display-box {
+      max-width: 100%;
+      margin: 20px 20px;
+      padding: 15px 25px;
+      background: #faf8f8;
+      border-radius: 10px;
+}
+
+.header {
+      padding: 8px 25px;
+      margin: 15px 20px;
+      border-radius: 10px;
+      background: rgb(253, 253, 253);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+}
+
+.header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      letter-spacing: -2px;
+}
+
+.header button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3px;
+      border: none;
+      outline: none;
+      border-radius: 30px;
+      padding: 15px 25px;
+      color: #faf8f8;
+      background: linear-gradient(135deg, #3C31C0, #292182);
+      transition: all 0.1s ease-in-out;
+}
+
+.header button:hover, .header button:focus-visible {
+      background: linear-gradient(135deg, #292182, #3C31C0);
+      transform: scale(1.03);
+}
+
+.header .header-btn-img {
+      width: 15px;
+}
+
+.container {
+      width: 100%;
+      background: none;
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+}
+
+.container h2 {
+      display: flex;
+      align-items: center;
+}
+
+.container > div {
+      margin: 20px 20px 20px 20px;
+      padding: 15px 25px;
+      background: #faf8f8;
+      border-radius: 10px;
+      flex: 1 1 0;
+}
+
+.container > div img {
+      width: 18px;
+      margin-right: 5px;
+}
+
+.card-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+}
+
+.card-box div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #efedfe;
+      padding: 12px 28px;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 1px 3px 1px #77777710;
+      flex: 1 1 0;
+}
+
+.card-box .numValues {
+      font-size: 1.5rem;
+      font-weight: 600;
+}
+
+.card-box .card-text {
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #444;
+}
+
+totalExpensesValue {
+      color: #3C31C0;
+}
+
+.monthValue {
+      color: rgb(211, 5, 5);
+}
+
+.yearValue {
+      color: rgb(211, 5, 5);
+}
+
+.input-fields {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      margin: 15px 0;
+      border: 1.3px solid #99999979;
+      transition: all 0.1s ease-in-out;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.5;
+      cursor: pointer;
+}
+
+.input-fields:hover {
+      background-color: #f5f4fc;
+      border: 1.5px solid #c7c2f8;
+      box-shadow: 0 1px 3px 1px #77777713;
+      transform: translateY(2px);
+}
+
+.input-fields::placeholder {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+}
+
+.input-fields:focus-visible {
+      border: 1.5px solid #3C31C0;
+      box-shadow: 0 1.5px 3px 3px #3d31c02a;
+      transform: scale(1.02);
+}
+
+.select-wrapper {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+}
+
+.select-wrapper select {
+      appearance: none; /* Removes default arrow */
+      -webkit-appearance: none;
+      background-color: #f8f8f8;
+      border: 1px solid #ccc;
+      padding: 10px 40px 10px 10px;
+      width: 100%;
+      cursor: pointer;
+      color: #333;
+      border-radius: 5px;
+}
+
+.select-wrapper::after {
+      content: "▼"; 
+      position: absolute;
+      right: 15px;
+      top: 63%;
+      transform: translateY(-50%);
+      pointer-events: none; /* Allows clicks to pass through */
+      color: #514f4f;
+      font-size: 12px;
+}
+
+label {
+      margin-bottom: -11px;
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 15px;
+      color: #555;
+}
+
+.transaction-input button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      outline: none;
+      border-radius: 30px;
+      width: 100%;
+      margin: 25px 0 10px 0;
+      padding: 15px;
+      color: #faf8f8;
+      background: linear-gradient(135deg, #3C31C0, #292182);
+      transition: all 0.1s ease-in-out;
+}
+
+.transaction-input button:hover, .transaction-input button:focus-visible {
+      background: linear-gradient(135deg, #292182, #3C31C0);
+      font-weight: 500;
+      transform: translateY(1px);
+      transform: scale(1.02);
+}
+
+.transaction-display-box {
+      padding: 15px 25px;
+}
+
+.transaction-display-box h2 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      margin-top: 7px;
+      font-size: 1.5em;
+}
+
+.transaction-display-box h2 img {
+      width: 20px;
+      margin-right: 8px;
+}
+
+.transaction-display {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      border-radius: 7px;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 1.5px 3px 3px #77777710;
+      transition: transform 0.1s ease-in-out;
+}
+
+.transaction-display:hover, .transaction-display:focus-visible {
+      background-color: #f2f6f7f6;
+      box-shadow: 0 1.9px 3px 3px #77777725;
+      transform: translateY(2px);
+}
+
+.text-and-icon-wrapper {
+      display: flex;
+      align-items: center;
+}
+
+.transaction-display .icon-wrapper {
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      width: 33px;
+      height: 33px;
+      position: relative;
+      padding: 11px;
+}
+
+.transaction-display .icon-wrapper img {
+      width: 17px;
+      position: absolute;
+}
+
+.transaction-display .text-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      margin-left: 10px;
+      color: #444;
+}
+
+.transaction-display .text-wrapper .display-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+}
+
+.transaction-display .text-wrapper .display-subscript {
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.3px;
+}
+
+.btn-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+}
+
+.transaction-display .delete-btn, .transaction-display .edit-btn {
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: none;
+      border: none;
+      width: 33px;
+      height: 33px;
+      padding: 25px;
+      position: relative;
+      transition: transform 0.2s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.transaction-display .delete-btn:hover, .transaction-display .edit-btn:hover, .transaction-display .delete-btn:focus-visible, .transaction-display .edit-btn:focus-visible {
+      background-color: #fff;
+      box-shadow: 0 1.9px 3px 3px #1a034823;
+      transform: translateY(1px);
+      outline: none;
+}
+
+.transaction-display .delete-btn img, .transaction-display .edit-btn img {
+      width: 20px;
+      position: absolute;
+}
+
+.transaction-display .transaction-value {
+      font-weight: 600;
+}
+
+.green-font {
+      color: rgba(3, 198, 3, 0.8);
+}
+
+.red-font {
+      color: rgb(219, 4, 4);
+}
+
+.green-bg {
+      background: rgba(3, 198, 3, 0.8);
+}
+
+.red-bg {
+      background: rgb(219, 4, 4);
+}
+
+.small-text {
+      font-size: 0.5rem;
+      margin-bottom: 0.5rem;
+      margin-top: 3rem;
+      color: #fff;
+      text-align: center;
+}
+
+.progress-bar {
+      width: 250px;
+      height: 250px;
+      margin: 40px auto;
+      transform: rotate(-90deg);
+
+}
+
+.green-bar circle {
+      stroke: var(--verdant-green);
+      stroke-width: 35px;
+}
+
+.svg-wrapper {
+      width: 100%;
+      display: grid;
+      place-items: center;
+}
+
+.empty-state {
+      color: #888;
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+}
+
+.empty-state.hide {
+      display: none;
+}

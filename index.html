@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="images/chart.png">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="style.css">
+      <title>Expense Tracker</title>
+</head>
+<body>
+      <div class="tracker-app">
+            <header class="header">
+                  <h1>Expense Tracker</h1>
+                        <button class="reset">
+                              <img src="images/reset.png" alt="Reset all data" class="header-btn-img">
+                              <span>Reset Data</span>
+                        </button>
+            </header>
+            <main class="container">
+                  <div class="summary">
+                        <h2>
+                              <img src="images/chart.png" alt="icon of a chart">
+                              <span>Financial Summary</span>
+                        </h2>
+                        <div class="card-box">
+                              <div class="summary-card">
+                                    <span class="card-text">
+                                          Total Expenses:
+                                    </span>
+                                    <span class="totalExpensesValue numValues">
+                                          $0.00
+                                    </span>
+                              </div>
+                              <div class="summary-card">
+                                    <span class="card-text">
+                                          This Month:
+                                    </span>
+                                    <span class="monthValue numValues">
+                                          $0.00
+                                    </span>
+                              </div>
+                              <div class="summary-card">
+                                    <span class="card-text">
+                                          This Year:
+                                    </span>
+                                    <span class="yearValue numValues">
+                                          $0.00
+                                    </span>
+                              </div>
+                        </div>
+                        
+                        <div class="svg-wrapper">
+                                    <svg class="progress-bar green-bar" viewBox="0 0 250 250">
+                                          <circle id="progress-circle"
+                                                fill="none"
+                                                r="100"
+                                                cx="125"
+                                                cy="125"
+                                          />
+                                    </svg>
+                        </div>
+                  </div>
+
+                  <div class="transaction-input">
+                        <h2>
+                              <img src="images/plus.png" alt="Plus icon">
+                              <span>Add Transaction</span>
+                        </h2>
+
+                        <label for="transaction-description-input">Transaction Description:</label>
+                        <input type="text" name="Transaction Description" id="transaction-description-input" placeholder="A short description of the transaction: 7 words or less." class="input-fields" required>
+
+                        <label for="transaction-amount-input">Transaction Amount ($)</label>
+                        <input type="number" name="Transaction Amount" id="transaction-amount-input" placeholder="e.g  100.00" class="input-fields" min="0.01" step="0.01" required>
+
+                        <div class="select-wrapper">
+                              <label for="category-input">Category:</label>
+                              <select name="Category Input" id="category-input" class="input-fields" required>
+                                    <option value="">Select Category</option>
+                                    <option value="food">Food</option>
+                                    <option value="utility bills">Utility Bills</option>
+                                    <option value="entertainment">Entertainment</option>
+                                    <option value="transport">Transport</option>
+                                    <option value="shopping">Shopping</option>
+                                    <option value="education">Education</option>
+                                    <option value="health">Health</option>
+                                    <option value="others">Others</option>
+                              </select>
+                        </div>
+
+                        <label for="date-input">Date:</label>
+                        <input type="date" name="Transaction Date" id="date-input" placeholder="01/01/2000" class="input-fields" max="2026-12-31" required>
+
+                        <button id="add-transaction-btn">
+                              <img src="images/add.png" alt="Add a new transaction">
+                              <span>Add Transaction</span>
+                        </button>
+                  </div>
+            </main>
+
+            <div class="transaction-display-box">
+                  <h2>
+                        <img src="images/history (1).png" alt="History Icon">
+                        <span>Recent Transactions</span>
+                  </h2>
+
+                  <div class="empty-state" id="empty-state">
+                        <p>There are no transactions here yet!
+                          Add something in the input fields above.</p>
+                  </div>
+
+                  <ul id="transaction-list" class="transaction-list">
+                        <!-- Transactions will be dynamically added here -->
+
+                  </ul>
+
+            </div>
+      </div>
+
+      <footer class="small-text">Made with love by Moyinoluwa</footer>
+      
+      <script src="script.js"></script>
+</body>
+</html>
