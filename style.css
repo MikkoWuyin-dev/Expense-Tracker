@@ -2,6 +2,12 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      appearance: none;
+      border: none;
+      outline: none;
+      text-decoration: none;
+      list-style: none;
+      font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -71,9 +77,13 @@ button {
       transition: all 0.1s ease-in-out;
 }
 
-.header button:hover, .header button:focus-visible {
+.header button:hover {
       background: linear-gradient(135deg, #292182, #3C31C0);
       transform: scale(1.03);
+}
+
+.header button:focus-visible {
+      border: 1.5px solid #fed76c;
 }
 
 .header .header-btn-img {
@@ -99,6 +109,7 @@ button {
       background: #faf8f8;
       border-radius: 10px;
       flex: 1 1 0;
+      position: relative;
 }
 
 .container > div img {
@@ -121,8 +132,14 @@ button {
       padding: 12px 28px;
       border-radius: 8px;
       margin: 20px 0;
-      box-shadow: 0 1px 3px 1px #77777710;
+      box-shadow: 0 5px 12px #40348716;
       flex: 1 1 0;
+      transition: all 300ms ease;
+}
+
+.card-box div:hover {
+      box-shadow: 0 0.5px 0.1rem #261b673d;
+      scale: 0.96;
 }
 
 .card-box .numValues {
@@ -137,7 +154,7 @@ button {
       color: #444;
 }
 
-totalExpensesValue {
+.totalExpensesValue {
       color: #3C31C0;
 }
 
@@ -145,7 +162,7 @@ totalExpensesValue {
       color: rgb(211, 5, 5);
 }
 
-.yearValue {
+.weekValue {
       color: rgb(211, 5, 5);
 }
 
@@ -219,6 +236,27 @@ label {
       color: #555;
 }
 
+.input-err-message {
+      display: none;
+}
+
+.show {
+      display: block;
+}
+
+@keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(5px); }
+      40% { transform: translateX(-5px); }
+      60% { transform: translateX(5px); }
+      80% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+}
+
+.shake {
+      animation: shake 0.3s;
+}
+
 .transaction-input button {
       display: flex;
       align-items: center;
@@ -248,14 +286,168 @@ label {
 .transaction-display-box h2 {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+}
+
+.transaction-display-box h2 .filter-group {
+      position: relative;
+}
+
+.transaction-display-box h2 .filter-group .date-picker-group {
+      display: none;
+      position: absolute;
+}
+
+.transaction-display-box h2 .filter-group .date-picker-group.show {
+      display: flex;
+      position: relative;
+      z-index: 2;
+      gap: 1rem;
+}
+
+.transaction-display-box h2 .filter-group label {
+      font-size: 0.7rem;
+      color: #7167dc;
+      background-color: #faf8f8;
+      padding: 0.1rem 0.3rem 0.2rem 0.2rem;
+      font-weight: 500;
+      position: absolute;
+      top: -65%;
+      left: 65%;
+      pointer-events: none;
+}
+
+.transaction-display-box h2 .filter-group label:nth-child(2) {
+      left: 22.5%;
+}
+
+.transaction-display-box h2 .filter-group label:hover {
+      scale: 1.04;
+      background-color: #faf8f8;
+}
+
+.transaction-display-box h2 .filter-group .date-pick-err {
+      display: none;
+      font-size: 0.6rem;
+      color: #d32121;
+      margin: 0.3rem auto;
+      position: absolute;
+      z-index: 3;
+      top: 105%;
+      left: 21.5%;
+}
+
+.transaction-display-box h2 .filter-group .date-pick-err.show {
+      display: block;
+}
+
+.transaction-display-box h2 .filter-group input {
+      background-color: transparent;
+      border: 1.5px solid #7167dc;
+      color: #7167dc;
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+      padding: 0.4rem 0.4rem 0.4rem 0.8rem;
+      box-shadow: 0 6px 16px #6c60f43f;
+      transition: all 300ms ease;
+}
+
+.transaction-display-box h2 .filter-group input:hover {
+      scale: 0.95;
+      box-shadow: 0 1.5px 1px #170c8247;
+}
+
+.transaction-display-box h2 .reveal-btn-wrapper button {
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      padding: 1rem;
+      color: #3C31C0;
+      font-weight: 500;
+      background-color: transparent;
+      transition: all 300ms ease;
+}
+
+.transaction-display-box h2 .reveal-btn-wrapper button:hover, .transaction-display-box h2 .reveal-btn-wrapper button:focus {
+      background-color: #efedfe;
+      box-shadow: 0 2px 8px #6c60f46c;
+}
+
+.reveal-btn-wrapper .category-filter-reveal-btn span {
+      color: var(--primary-color);
+}
+
+.reveal-btn-wrapper .category-filters .filter-btns {
+      display: none;
+}
+
+.reveal-btn-wrapper .category-filters .filter-btns.show {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+}
+
+.reveal-btn-wrapper .category-filters .filter-btns button {
+      border: 1px solid var(--primary-color);
+      border-radius: 45px;
+      font-size: 0.6rem;
+      padding: 0.2rem 0.5rem;
+}
+
+.reveal-btn-wrapper .category-filters .filter-btns button:hover, .reveal-btn-wrapper .category-filters .filter-btns button:focus {
+      scale: 1.4;
+      box-shadow: 0 2px 2px #6c60f46c;
+      margin: 0  0.7rem;
+}
+
+.reveal-btn-wrapper .category-filters .filter-btns .clear-category {
+      border-radius: 15px;
+      border: 1px solid #d32121;
+      color: #d32121;
+      font-size: 0.6rem;
+      padding: 0.3rem 0.6rem;  
+}
+
+.reveal-btn-wrapper .category-filters .filter-btns .clear-category:hover, .reveal-btn-wrapper .category-filters .filter-btns .clear-category:focus {
+      box-shadow: 0 1.5px 1.5px #ff26263f;
+      background-color: #edcfcf29;
+      font-size: 0.61rem;
+}
+
+
+.transaction-display-box h2 .filter-group button.reset-filter-btn {
+      border-radius: 15px;
+      border: 1px solid #d32121;
+      color: #d32121;
+      font-size: 0.6rem;
+      padding: 0.5rem 1rem;
+}
+
+.transaction-display-box h2 .filter-group button.reset-filter-btn:hover, .transaction-display-box h2 .filter-group button.reset-filter-btn:focus {
+      box-shadow: 0 1.5px 1.5px #ff26263f;
+      background-color: #edcfcf29;
+      scale: 1.12;
+      font-size: 0.61rem;
+}
+
+.transaction-display-box h2 .filter-group button img {
+      transition: all 300ms ease;
+}
+
+.transaction-display-box h2 .filter-group button img:hover {
+      scale: 1.13;
+}
+
+.transaction-display-box h2 div {
+      display: flex;
+      align-items: center;
       margin-bottom: 20px;
       margin-top: 7px;
-      font-size: 1.5em;
+      gap: 10px;
 }
 
 .transaction-display-box h2 img {
       width: 20px;
-      margin-right: 8px;
 }
 
 .transaction-display {
@@ -271,8 +463,8 @@ label {
 }
 
 .transaction-display:hover, .transaction-display:focus-visible {
-      background-color: #f2f6f7f6;
-      box-shadow: 0 1.9px 3px 3px #77777725;
+      background-color: #efedfe;
+      box-shadow: 0 4px 1.5px #13045424;
       transform: translateY(2px);
 }
 
@@ -336,7 +528,7 @@ label {
 
 .transaction-display .delete-btn:hover, .transaction-display .edit-btn:hover, .transaction-display .delete-btn:focus-visible, .transaction-display .edit-btn:focus-visible {
       background-color: #fff;
-      box-shadow: 0 1.9px 3px 3px #1a034823;
+      box-shadow: 0 1.9px 3px 3px #1a034808;
       transform: translateY(1px);
       outline: none;
 }
@@ -397,9 +589,156 @@ label {
       color: #888;
       text-align: center;
       font-size: 1.1rem;
-      margin-bottom: 20px;
+      margin: 35px 0 20px 0;
 }
 
 .empty-state.hide {
       display: none;
+}
+
+.overlay {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+}
+
+.overlay.show {
+      display: flex;
+}
+
+.pop-up-box {
+      background-color: #fefefe;
+      padding: 45px;
+      border-radius: 20px;
+      width: 75%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 2px 15px #34333375;
+}
+
+.pop-up-box h3 {
+      color: rgb(211, 5, 5);
+      font-size: 1.9rem;
+}
+
+.popup-box p {
+      font-size: 0.4rem;
+      color: #555;
+}
+
+.popup-btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 15px 0 10px 0;
+}
+
+.pop-up-box button {
+      padding: 12px 25px;
+      border: none;
+      outline: none;
+      transition: all 0.1s ease-in-out;
+      border-radius: 25px;
+      color: #fefefe;
+}
+
+.pop-up-box .cancel-btn {
+      background: linear-gradient(135deg, #292182, #3C31C0);
+}
+
+.pop-up-box .ok-btn {
+      background-color: #fefefe;
+      border: 1px solid var(--secondary-color);
+      color: var(--secondary-color);
+      font-weight: 600;
+}
+
+.pop-up-box button:hover, .pop-up-box button:focus {
+      font-weight: 500;
+      transform: translateY(1px);
+      transform: scale(1.09);
+      box-shadow: 0 2px 7px #7777772f;
+}
+
+.blur-bg {
+      filter: blur(5px);
+      pointer-events: none;
+}
+
+.analytics {
+      width: 96%;
+      display: flex;
+      align-items: center;
+      justify-items: space-between;
+      gap: 2.5rem;
+      margin: 0 auto;
+}
+
+.analytics .empty-canvas-msg {
+      display: none;
+      font-size: 2.3rem;
+      color: lightgrey;
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 10%;
+      font-weight: 700;
+}
+
+.analytics .empty-canvas-msg span {
+      display: block;
+      font-size: 2.5rem;
+      margin-top: 1.5rem;
+}
+
+.analytics .empty-canvas-msg.show {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+
+.analytics .details {
+      background: #efedfe;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      padding: 1rem 2rem;
+      height: fit-content;
+      box-shadow: 0 9px 1.2rem #40348734;
+      transition: all 300ms ease;
+      text-transform: capitalize;
+}
+
+.details.hide {
+      display: none;
+}
+
+.analytics .details:hover {
+      box-shadow: 0 5px 0.3rem #40348758;
+      scale: 1.03;
+}
+
+.analytics .details h5 {
+      margin-bottom: 0.7rem;
+}
+
+.analytics .details ul li {
+      font-size: 0.8rem;
+      font-weight: 400;
+      padding: 3px 0;
+}
+
+.analytics .details ul li .percent {
+      color: rgb(206, 92, 51);
+      font-weight: 600;
 }
