@@ -1,127 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="images/chart.png">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
-      <title>Expense Tracker</title>
-</head>
-<body>
-      <div class="tracker-app">
-            <header class="header">
-                  <h1>Expense Tracker</h1>
-                        <button class="reset">
-                              <img src="images/reset.png" alt="Reset all data" class="header-btn-img">
-                              <span>Reset Data</span>
-                        </button>
-            </header>
-            <main class="container">
-                  <div class="summary">
-                        <h2>
-                              <img src="images/chart.png" alt="icon of a chart">
-                              <span>Financial Summary</span>
-                        </h2>
-                        <div class="card-box">
-                              <div class="summary-card">
-                                    <span class="card-text">
-                                          Total Expenses:
-                                    </span>
-                                    <span class="totalExpensesValue numValues">
-                                          $0.00
-                                    </span>
-                              </div>
-                              <div class="summary-card">
-                                    <span class="card-text">
-                                          This Month:
-                                    </span>
-                                    <span class="monthValue numValues">
-                                          $0.00
-                                    </span>
-                              </div>
-                              <div class="summary-card">
-                                    <span class="card-text">
-                                          This Year:
-                                    </span>
-                                    <span class="yearValue numValues">
-                                          $0.00
-                                    </span>
-                              </div>
-                        </div>
-                        
-                        <div class="svg-wrapper">
-                                    <svg class="progress-bar green-bar" viewBox="0 0 250 250">
-                                          <circle id="progress-circle"
-                                                fill="none"
-                                                r="100"
-                                                cx="125"
-                                                cy="125"
-                                          />
-                                    </svg>
-                        </div>
-                  </div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet">
+    <link rel="icon" href="images/chart.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Expense Tracker</title>
+  </head>
+  <body>
+    <div class="tracker-app">
+      <header class="header">
+        <h1>Expense Tracker</h1>
+        <button class="reset-btn" title="Clear all data">
+          <img src="images/reset.png" alt="Reset all data" class="header-btn-img">
+          <span>Reset Data</span>
+        </button>
+      </header>
+      <!------------End Of Header----------------->
 
-                  <div class="transaction-input">
-                        <h2>
-                              <img src="images/plus.png" alt="Plus icon">
-                              <span>Add Transaction</span>
-                        </h2>
+      <main class="container">
+        <div class="summary">
+          <h2>
+            <img src="images/chart.png" alt="icon of a chart">
+            <span>Financial Summary</span>
+          </h2>
+          <div class="card-box">
+            <div class="summary-card">
+              <span class="card-text">
+                Total Expenses:
+              </span>
+              <span class="totalExpensesValue numValues">
+                ₦0.00
+              </span>
+            </div>
+            <div class="summary-card">
+              <span class="card-text">
+                This Month:
+              </span>
+              <span class="monthValue numValues">
+                ₦0.00
+              </span>
+            </div>
+            <div class="summary-card">
+              <span class="card-text">
+                This Week:
+              </span>
+              <span class="weekValue numValues">
+                ₦0.00
+              </span>
+            </div>
+          </div>
+          <!-----------End Of Display Cards----------->
 
-                        <label for="transaction-description-input">Transaction Description:</label>
-                        <input type="text" name="Transaction Description" id="transaction-description-input" placeholder="A short description of the transaction: 7 words or less." class="input-fields" required>
+          <div class="analytics">
+            <div class="chart-container">
+              <canvas id="myChart">
+              </canvas>
+              <p class="empty-canvas-msg">Nothing to see here yet...
+                <span class="material-icons-sharp">hourglass_empty</span>
+              </p>
+            </div>
 
-                        <label for="transaction-amount-input">Transaction Amount ($)</label>
-                        <input type="number" name="Transaction Amount" id="transaction-amount-input" placeholder="e.g  100.00" class="input-fields" min="0.01" step="0.01" required>
+              <div class="details">
+                <h5 class="details-list-header">Breakdown:</h5>
+                <ul class="details-list">
+                </ul>
+              </div>
+          </div>
 
-                        <div class="select-wrapper">
-                              <label for="category-input">Category:</label>
-                              <select name="Category Input" id="category-input" class="input-fields" required>
-                                    <option value="">Select Category</option>
-                                    <option value="food">Food</option>
-                                    <option value="utility bills">Utility Bills</option>
-                                    <option value="entertainment">Entertainment</option>
-                                    <option value="transport">Transport</option>
-                                    <option value="shopping">Shopping</option>
-                                    <option value="education">Education</option>
-                                    <option value="health">Health</option>
-                                    <option value="others">Others</option>
-                              </select>
-                        </div>
+          <!-----------End Of Pie Chart----------->
+       </div>
 
-                        <label for="date-input">Date:</label>
-                        <input type="date" name="Transaction Date" id="date-input" placeholder="01/01/2000" class="input-fields" max="2026-12-31" required>
+        <div class="transaction-input">
+            <h2>
+              <img src="images/plus.png" alt="Plus icon">
+              <span>Add Transaction</span>
+            </h2>
 
-                        <button id="add-transaction-btn">
-                              <img src="images/add.png" alt="Add a new transaction">
-                              <span>Add Transaction</span>
-                        </button>
-                  </div>
-            </main>
+            <form id="user-input-form">
+              <label for="transaction-description-input">Transaction Description:</label>
+              <input type="text" name="Transaction Description" id="transaction-description-input" placeholder="A short description of the transaction: 7 words or less." class="input-fields" required>
 
-            <div class="transaction-display-box">
-                  <h2>
-                        <img src="images/history (1).png" alt="History Icon">
-                        <span>Recent Transactions</span>
-                  </h2>
+              <label for="transaction-amount-input">Transaction Amount (₦)</label>
+              <input type="number" name="Transaction Amount" id="transaction-amount-input" placeholder="e.g  100.00" class="input-fields" min="1" step="1" required>
 
-                  <div class="empty-state" id="empty-state">
-                        <p>There are no transactions here yet!
-                          Add something in the input fields above.</p>
-                  </div>
+              <div class="select-wrapper">
+                <label for="category-input">Category:</label>
+                <select name="Category Input" id="category-input" class="input-fields" required>
+                  <option value="">Select Category</option>
+                  <option value="food">Food</option>
+                  <option value="utility bills">Utility Bills</option>
+                  <option value="entertainment">Entertainment</option>
+                  <option value="transport">Transport</option>
+                  <option value="shopping">Shopping</option>
+                  <option value="education">Education</option>
+                  <option value="health">Health</option>
+                  <option value="others">Others</option>
+                </select>
+              </div>
 
-                  <ul id="transaction-list" class="transaction-list">
-                        <!-- Transactions will be dynamically added here -->
+              <label for="date-input">Date:</label>
+              <input type="date" name="Transaction Date" id="date-input" placeholder="01/01/2000" class="input-fields"  required>
+            </form>
 
-                  </ul>
+            <p class="input-err-message red-font">Please make to sure to fill all field correctly!</p>
+
+            <button type="button" id="add-transaction-btn" title="Add an entry.">
+              <img src="images/add.png" alt="Add a new transaction">
+              <span>Add Transaction</span>
+            </button>
+        </div>
+      </main>
+
+      <div class="transaction-display-box">
+        <h2>
+          <div>
+            <img src="images/history (1).png" alt="History Icon">
+            <span>Recent Transactions</span>
+          </div>
+
+          <div class="reveal-btn-wrapper">
+            <div class="category-filters">
+              <div class="filter-btns">
+                <button class="filter-btn" data-category="food">Food</button>
+                <button class="filter-btn" data-category="utility bills">Utility</button>
+                <button class="filter-btn" data-category="entertainment">Entertainment</button>
+                <button class="filter-btn" data-category="transport">Transport</button>
+                <button class="filter-btn" data-category="shopping">Shopping</button>
+                <button class="filter-btn" data-category="education">Education</button>
+                <button class="filter-btn" data-category="health">Health</button>
+                <button class="filter-btn" data-category="others">Others</button>
+              </div>
+              <button class="category-filter-reveal-btn" title="Filter by category">
+                <span class="material-icons-sharp">category</span>
+              </button>
+          </div>
+
+          <div class="filter-group">
+            <div class="date-picker-group">
+                <button type="button" class="reset-filter-btn" id="reset-filter-btn" title="Clear the date range filters.">Clear</button>
+
+                <label for="start-date-input">Start Date:</label>
+                <input type="date" class="start-date" id="start-date-input" title="Start date range.">
+                <p class="date-pick-err">Please enter an ending date</p>
+
+                <label for="end-date-input">End Date:</label>
+                <input type="date" class="end-date" id="end-date-input" title="End date range">
 
             </div>
-      </div>
 
-      <footer class="small-text">Made with love by Moyinoluwa</footer>
-      
-      <script src="script.js"></script>
-</body>
+            <button type="button" title="Filter expenses by date." class="filter-reveal-btn" id="filter-reveal-btn">
+              <img src="images/filter.png" alt="Filter expenses by date.">
+            </button>
+          </div>
+          </div>
+
+        </h2>
+
+
+        <div class="empty-state" id="empty-state">
+          <p>There are no transactions here yet!
+          Add something in the input fields above.</p>
+        </div>
+
+        <ul id="transaction-list" class="transaction-list">
+          <!-- Transactions will be dynamically added here -->
+        </ul>
+  
+      </div>
+    </div>
+
+      <div class="overlay" id="pop-up-overlay">
+        <div class="pop-up-box" id="pop-up-box">
+          <h3>Are you sure?</h3>
+          <p>This action will delete all your transactions and reset all values to zero. This action cannot be undone.</p>
+          <div class="popup-btns">
+            <button id="cancel-btn" class="cancel-btn">Cancel</button>
+            <button id="ok-btn" class="ok-btn">Go Ahead</button>
+          </div>
+        </div>
+    </div>
+
+    <footer class="small-text">Made with love by Moyinoluwa</footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
+    <script src="script.js"></script>
+    <!-- <script src="practise.js"></script> -->
+  </body>
 </html>
